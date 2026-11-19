@@ -28,3 +28,9 @@ pip install flask requests
 
 පියවර 2 🔪
 
+ප්‍රොජෙක්ට් ෆෝල්ඩරය සාදා ගැනීම 
+
+mkdir ~/vuln-scanner
+cd ~/vuln-scanner
+mkdir templates
+
