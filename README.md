@@ -34,3 +34,12 @@ mkdir ~/vuln-scanner
 cd ~/vuln-scanner
 mkdir templates
 
+පියවර 3: ගොනු (Files) සෑදීම
+
+පහත දැක්වෙන ගොනු 3, අදාළ ස්ථානවලට nano වැනි ටෙක්ස්ට් එඩිටරයක් භාවිතයෙන් සාදාගන්න.
+
+· nano scanner.py (ස්කෑනර් තර්කය - පහත කේතය ඇතුළත් කරන්න)
+· nano app.py (Flask සර්වර් එක - පහත කේතය ඇතුළත් කරන්න)
+· nano templates/index.html (ඩෑෂ්බෝඩ් එක - පහත කේතය ඇතුළත් කරන්න)
+
+
