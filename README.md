@@ -21,19 +21,19 @@ Termux හෝ Linux පරිසරයක ධාවනය කළ හැකි, F
 
 ### පියවර 1: Termux Setup කරගැනීම
 Termux යෙදුම විවෘත කර පහත විධානයන් ලබා දෙන්න (මෙයින් අවශ්‍ය පැකේජ උපුටා ගනී):
-
+```
 pkg update -y && pkg upgrade -y
 pkg install python nmap -y
 pip install flask requests
-
+```
 පියවර 2 🔪
 
 ප්‍රොජෙක්ට් ෆෝල්ඩරය සාදා ගැනීම 
-
+```bash 
 mkdir ~/vuln-scanner
 cd ~/vuln-scanner
 mkdir templates
-
+```
 පියවර 3: ගොනු (Files) සෑදීම
 
 පහත දැක්වෙන ගොනු 3, අදාළ ස්ථානවලට nano වැනි ටෙක්ස්ට් එඩිටරයක් භාවිතයෙන් සාදාගන්න.
@@ -42,4 +42,15 @@ mkdir templates
 · nano app.py (Flask සර්වර් එක - පහත කේතය ඇතුළත් කරන්න)
 · nano templates/index.html (ඩෑෂ්බෝඩ් එක - පහත කේතය ඇතුළත් කරන්න)
 
+පියවර 4: සර්වර් එක ධාවනය කිරීම
 
+```bash
+python app.py
+```
+
+පියවර 5: බ්‍රව්සරය හරහා ප්‍රවේශ වීම
+
+ඔබගේ ෆෝන් එකේ හෝ පරිගණකයේ බ්‍රව්සරය විවෘත කර පහත ලිපිනයට යන්න:
+
+```text
+http://127.0.0.1:5000
