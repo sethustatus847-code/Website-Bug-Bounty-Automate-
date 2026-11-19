@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkVoid VulnScanner</title>
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Courier New', monospace; padding: 20px; }
+        h1 { color: #58a6ff; text-align: center; text-transform: uppercase; letter-spacing: 2px;}
+        .container { max-width: 800px; margin: 0 auto; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 30px; }
+        input[type="text"] { flex: 1; padding: 12px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 5px; outline: none;}
+        input[type="text"]:focus { border-color: #58a6ff; }
+        button { padding: 12px 24px; background: #238636; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;}
+        button:hover { background: #2ea043; }
+        
+        .report-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 20px;}
+        .report-card h2 { color: #f0883e; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 0;}
+        .report-card h3 { color: #79c0ff; margin-bottom: 10px;}
+        
+        ul { list-style-type: none; padding: 0; }
+        li { background: #0d1117; border: 1px solid #30363d; margin-bottom: 5px; padding: 10px; border-radius: 4px; }
+        
+        .danger { color: #ff7b72; border-color: #da3633;}
+        .success { color: #3fb950; }
+        .error { color: #ff7b72; text-align: center; font-weight: bold; margin-bottom: 20px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ DarkVoid Vulnerability Scanner ⚡</h1>
+        
+        <form method="POST" class="search-box">
+            <input type="text" name="url" placeholder="Enter Target URL (e.g., example.com)" required>
+            <button type="submit">SCAN</button>
+        </form>
+
+        {% if error %}
+            <div class="error">❌ {{ error }}</div>
+        {% endif %}
+
+        {% if report %}
+            <div class="report-card">
+                <h2>🎯 Target: {{ report.target }}</h2>
+                <p><strong>Server Info:</strong> <span class="success">{{ report.server_info }}</span></p>
+            </div>
+
+            <div class="report-card">
+                <h3>🔍 Open Ports</h3>
+                {% if report.open_ports %}
+                    <ul>
+                        {% for port in report.open_ports %}
+                            <li class="danger">{{ port }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="success">✅ No common open ports found.</p>
+                {% endif %}
+            </div>
+
+            <div class="report-card">
+                <h3>🛡️ Missing Security Headers</h3>
+                {% if report.headers_missing %}
+                    <ul>
+                        {% for header in report.headers_missing %}
+                            <li class="danger">{{ header }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="success">✅ All basic security headers are present.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
